@@ -52,7 +52,7 @@ Jetpack Compose omogućava:
 - lakšu ponovnu upotrebu komponenti
 - automatsko ažuriranje UI-ja
 
-UI se automatski rekomponuje kada se stanje promeni, bez ručnih poziva za osvežavanje prikaza.
+Jetpack Compose nudi deklarativni UI, što omogućava da UI bude funkcija stanja i automatski reaguje na promene, za razliku od klasičnog XML pristupa. Ovo ga čini pogodnijim od tradicionalnih Android tehnologija i konkurentnijim rešenjima kao što su Flutter ili React Native.
 
 ---
 
