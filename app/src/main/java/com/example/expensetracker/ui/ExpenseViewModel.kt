@@ -3,7 +3,7 @@ package com.example.expensetracker.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.expensetracker.data.ExpenseCategory
-import com.example.expensetracker.data.ExpenseRepository
+import com.example.expensetracker.data.repository.ExpenseRepository
 import com.example.expensetracker.data.local.ExpenseEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

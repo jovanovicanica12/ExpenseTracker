@@ -7,7 +7,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.expensetracker.data.ExpenseRepository
+import com.example.expensetracker.data.repository.ExpenseRepository
 import com.example.expensetracker.data.local.DbProvider
 import com.example.expensetracker.ui.ExpenseViewModel
 import com.example.expensetracker.ui.ExpenseVmFactory
