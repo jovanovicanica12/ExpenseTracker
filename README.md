@@ -5,113 +5,155 @@
 
 ---
 
-## O projektu
+## Uvod
+
+Razvoj korisničkog interfejsa (UI) je jedan od najvažnijih aspekata Android aplikacija.
+Android UI je razvijen korišćenjem XML layout fajlova, dok se logika aplikacije pisala u Javi ili Kotlinu. Sa razvojem modernih tehnologija i potrebom za bržim i fleksibilnijim razvojem, Google je predstavio Jetpack Compose – moderan, deklarativni UI framework.
 
 Ovaj projekat predstavlja praktičan primer razvoja moderne Android aplikacije za praćenje ličnih troškova (**Expense Tracker**) korišćenjem **Jetpack Compose**-a.
-
-Cilj projekta je da se kroz realnu aplikaciju prikažu:
-- prednosti deklarativnog UI pristupa
-- smanjenje boilerplate koda u odnosu na XML
-- jasna arhitektura i organizacija Compose ekrana
-- lakše održavanje i proširivanje aplikacije
+Cilj ovog projekta je detaljna analiza i poređenje ova dva pristupa, sa osvrtom na arhitekturu, način rada, prednosti, mane i primenu u realnim projektima.
+Ovaj projekat predstavlja praktičan primer razvoja moderne Android aplikacije za praćenje ličnih troškova (**Expense Tracker**) korišćenjem **Jetpack Compose**-a.
 
 Aplikacija omogućava unos, izmenu, brisanje i pregled troškova, kao i vizuelni prikaz statistike kroz grafikone.
 
 ---
+## XML
+XML se koristi za definisanje izgleda Android ekrana. Svaki ekran se opisuje posebnim XML fajlom, dok se ponašanje komponenti kontroliše iz Java ili Kotlin koda.
 
-## Problemi
+### Osnovne karakteristike
+- UI i logika su strogo odvojeni
+- Svaki element ima sopstveni XML tag
+- Hijerarhijska struktura layouta
+- Često korišćenje findViewById (ili ViewBinding/DataBinding)
 
-U realnim Android projektima, razvoj korisničkog interfejsa često nailazi na sledeće probleme:
+### Prednosti
+- Dugogodišnja stabilnost i dokumentacija
+- Velika količina postojećih projekata i primera
+- Lakše razumevanje za početnike
+- Jasna separacija dizajna i logike
 
-- UI brzo postaje kompleksan  
-  (više ekrana, liste, filteri, dijalozi, forme)
-- Kod XML-a često imamo:
-    - odvojene XML fajlove + binding kod
-    - manuelna ažuriranja UI-ja
-    - RecyclerView + adaptere
-    - notifyDataSetChanged
-    - findViewById / ViewBinding
-- Upravljanje stanjem je otežano:
-    - loading stanja
-    - prazna stanja
-    - validacije
-    - filteri
-- Refaktorisanje UI-ja je sporo jer je UI razdvojen između XML-a i Kotlin koda
-
----
-
-## Zašto Jetpack Compose rešava ove probleme
-
-Jetpack Compose je moderni deklarativni UI toolkit za Android.
-
-Jetpack Compose omogućava:
-
-- deklarativni pristup (UI = funkcija stanja)
-- manje boilerplate koda
-- nema XML fajlova
-- lakšu ponovnu upotrebu komponenti
-- automatsko ažuriranje UI-ja
-
-Jetpack Compose nudi deklarativni UI, što omogućava da UI bude funkcija stanja i automatski reaguje na promene, za razliku od klasičnog XML pristupa. Ovo ga čini pogodnijim od tradicionalnih Android tehnologija i konkurentnijim rešenjima kao što su Flutter ili React Native.
+### Mane
+- Veliki i nepregledni layout fajlovi
+- Teško upravljanje dinamičkim UI-em
+- Boilerplate kod (binding, adapteri, listeneri)
+- Kompleksne hijerarhije smanjuju performanse
 
 ---
 
+## Jetpack Compose 
+Jetpack Compose predstavlja potpuno novi način razmišljanja o UI-u. Umesto opisivanja kako da se UI izgradi, Compose opisuje kako UI treba da izgleda u datom stanju.
 
-## Jetpack Compose vs XML
-| XML                    | Jetpack Compose     |
-| ---------------------- | ------------------- |
-| XML layout fajlovi     | Kotlin funkcije     |
-| RecyclerView + Adapter | LazyColumn          |
-| Ručni update UI-ja     | Automatski          |
-| Više boilerplate koda  | Manje koda          |
-| Sporije izmene         | Brže refaktorisanje |
+### Osnovne karakteristike
+- UI se piše direktno u Kotlinu
+- Deklarativni pristup
+- Automatski reaguje na promenu stanja (state)
+- Bez XML fajlova
+
+### Prednosti
+- Manje koda (manje boilerplate-a)
+- Lakše upravljanje dinamičkim UI-em
+- Bolja čitljivost i održavanje koda
+- Jednostavne animacije i teme
+- Brži razvoj i iteracije (Preview, Hot Reload)
+
+### Mane
+- Novija tehnologija (manje legacy resursa)
+- Veća početna kriva učenja
+- Migracija postojećih XML projekata zahteva vreme
+- Potrebno razumevanje stanja i recomposition-a
 
 ---
 
-## Funkcionalnosti
+## XML vs Jetpack Compose
+| Osobina | XML | Jetpack Compose |
+|--------|-----|-----------------|
+| Način pisanja | Imperativni | Deklarativni |
+| Jezik | XML + Kotlin/Java | Kotlin |
+| Upravljanje stanjem | Ručno | Automatsko |
+| Animacije | Kompleksne | Jednostavne |
+| Performanse | Zavise od hijerarhije | Optimizovana recomposition |
+| Testiranje | Teže UI testiranje | Lakše UI testiranje |
+| Brzina razvoja | Sporija | Brža |
+
+---
+
+## Arhitektura i upravljanje stanjem
+### Kod XML-a, promene UI-a zahtevaju ručne izmene:
+- Menjanje vidljivosti
+- Ponovno bindovanje podataka
+- Pozivanje metoda nad view-ovima
+
+### U Jetpack Compose-u:
+- UI je funkcija stanja
+- Promena stanja automatski izaziva recomposition
+- Manja šansa za greške i „nekonzistentan UI“
+
+---
+
+## Performanse i održavanje
+### XML:
+- Može imati duboke view hijerarhije
+- Teže održavanje velikih layout fajlova
+- Veći rizik od grešaka pri promenama
+
+### Jetpack Compose:
+- Koristi pametnu recomposition strategiju
+- Izbegava duboke hijerarhije
+- Olakšava refaktorisanje i ponovno korišćenje komponenti
+
+--- 
+
+## Primena u realnim projektima
+- XML je i dalje čest u legacy projektima
+- Jetpack Compose je preporučeni pristup za nove projekte
+- Moguća je postepena migracija (Compose + XML zajedno)
+
+--- 
+
+## Funkcionalnosti Expense Tracker aplikacije
 
 ### Home ekran
-- prikaz ukupne potrošnje
-- broj unetih troškova
-- filteri po kategorijama
-- lista troškova:
-    - opis
-    - kategorija
-    - iznos (€)
-    - ikonica za brisanje
-- empty state ako nema podataka
+- Prikaz ukupne potrošnje
+- Broj unetih troškova
+- Filteri po kategorijama
+- Lista troškova:
+    - Opis
+    - Kategorija
+    - Iznos (€)
+    - Ikonica za brisanje
+- Empty state ako nema podataka
 
 ### Dodavanje troška
-- unos iznosa (€)
-- opis (opciono)
-- izbor kategorije (dropdown)
-- validacija (iznos > 0)
-- snackbar potvrda
+- Unos iznosa (€)
+- Opis (opciono)
+- Izbor kategorije (dropdown)
+- Validacija (iznos > 0)
+- Snackbar potvrda
 
 ### Izmena troška
-- unapred popunjena forma
-- izmena podataka
-- brisanje uz dijalog potvrde
+- Unapred popunjena forma
+- Izmena podataka
+- Brisanje uz dijalog potvrde
 
 ### Statistika
-- izbor vremenskog opsega:
-    - svi troškovi
-    - poslednjih 7 dana
-    - poslednjih 30 dana
-    - tekući mesec
-- pie chart
-- bar chart
-- legenda (kategorija + procenat + iznos)
-- empty state ako nema podataka
+- Izbor vremenskog opsega:
+    - Svi troškovi
+    - Poslednjih 7 dana
+    - Poslednjih 30 dana
+    - Tekući mesec
+- Pie chart
+- Bar chart
+- Legenda (kategorija + procenat + iznos)
+- Empty state ako nema podataka
 
 ---
 
 ## Nefunkcionalni zahtevi
 
-- čista i čitljiva arhitektura (MVVM)
-- trajno čuvanje podataka (Room)
-- konzistentan UI:
-- jednostavno pokretanje projekta
+- Čista i čitljiva arhitektura (MVVM)
+- Trajno čuvanje podataka (Room)
+- Konzistentan UI
+- Jednostavno pokretanje projekta
 
 ---
 
@@ -133,21 +175,21 @@ Jetpack Compose nudi deklarativni UI, što omogućava da UI bude funkcija stanja
 Aplikacija koristi **MVVM** arhitekturu.
 
 ### Slojevi:
-- **UI (Compose)** – prikazuje podatke i reaguje na stanje
-- **ViewModel** – čuva UI stanje i poslovnu logiku
-- **Repository** – jedinstvena tačka pristupa podacima
-- **Room** – lokalna baza podataka
+- **UI (Compose)** – Prikazuje podatke i reaguje na stanje
+- **ViewModel** – Čuva UI stanje i poslovnu logiku
+- **Repository** – Jedinstvena tačka pristupa podacima
+- **Room** – Lokalna baza podataka
 
 ### Zašto MVVM + Compose?
 
 Compose prirodno radi sa **Flow / StateFlow**:
 - ViewModel emituje stanje
 - UI automatski reaguje
-- nema manuelnih UI ažuriranja
+- Nema manuelnih UI ažuriranja
 
 ---
 
-## 8) Model podataka (Room)
+## Model podataka (Room)
 
 Svaki trošak se čuva u Room bazi.
 
@@ -159,9 +201,9 @@ Svaki trošak se čuva u Room bazi.
 - `createdAtMillis: Long`
 
 ### DAO operacije:
-- observe sve troškove
-- insert / update / delete
-- observe trošak po ID-ju
+- Observe sve troškove
+- Insert / Update / Delete
+- Observe trošak po ID-ju
 
 ---
 
@@ -169,7 +211,7 @@ Svaki trošak se čuva u Room bazi.
 
 Compose koristi **state-driven UI**:
 - UI čita stanje
-- promena stanja → recomposition
+- Promena stanja → recomposition
 
 U projektu:
 - `ExpenseViewModel` izlaže:
@@ -312,6 +354,8 @@ Text(text = stringResource(R.string.stats))
 
 ## Zaključak
 
-Jetpack Compose se pokazao kao efikasan alat za razvoj modernih Android aplikacija.
-Kroz razvoj Expense Tracker aplikacije demonstrirano je da deklarativni UI pristup
-značajno pojednostavljuje kod, olakšava održavanje i omogućava brže iteracije u razvoju.
+Jetpack Compose predstavlja značajan iskorak u razvoju Android aplikacija, nudeći moderniji, fleksibilniji i produktivniji način izrade korisničkog interfejsa. Iako XML i dalje ima svoje mesto, posebno u postojećim projektima, Compose se nameće kao budući standard Android UI razvoja.
+Izbor tehnologije zavisi od:
+- Tipa projekta
+- Zahteva tima
+- Vremena i kompleksnosti aplikacije
