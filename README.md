@@ -12,7 +12,6 @@ Android UI je razvijen korišćenjem XML layout fajlova, dok se logika aplikacij
 
 Ovaj projekat predstavlja praktičan primer razvoja moderne Android aplikacije za praćenje ličnih troškova (**Expense Tracker**) korišćenjem **Jetpack Compose**-a.
 Cilj ovog projekta je detaljna analiza i poređenje ova dva pristupa, sa osvrtom na arhitekturu, način rada, prednosti, mane i primenu u realnim projektima.
-Ovaj projekat predstavlja praktičan primer razvoja moderne Android aplikacije za praćenje ličnih troškova (**Expense Tracker**) korišćenjem **Jetpack Compose**-a.
 
 Aplikacija omogućava unos, izmenu, brisanje i pregled troškova, kao i vizuelni prikaz statistike kroz grafikone.
 
